@@ -1,0 +1,114 @@
+<br>
+<div>
+  <br>
+  <h2 class="modal-title" id="uploadPackageLabel" class="text-style"><i
+      class="fa fa-file-archive-o" aria-hidden="true"></i> {{"PUBLISH_ZENODO"
+    |translate}}</h2>
+  <mat-stepper #stepper>
+    <mat-step>
+      <form
+        [formGroup]="tokenForm">
+        <p class="text-style"><strong>
+            <i
+              class="fa fa-info-circle" aria-hidden="true"></i> {{"PUBLISH_ZENODO_PART01"
+            | translate}}</strong></p>
+        <p class="text-style"><strong>{{"QU02_PART01"|
+            translate}}</strong></p>
+        <label for style="margin-right: 5px;" class="text-style">{{"WORD_YES" |
+          translate}}</label>
+        <input type="checkbox" style="margin-right:10px;"
+          (change)="onCheckTokenOption(true)" [checked]="isTokenOption">
+        <label for style="margin-right: 5px;" class="text-style">{{"WORD_NO" |
+          translate}}</label>
+        <input type="checkbox" style="margin-right:10px;"
+          (change)="onCheckTokenOption(false)" [checked]="!isTokenOption">
+        <br>
+        <div *ngIf="!isTokenOption">
+          <p class="text-style"><strong>{{"QU03_PART01" | translate}}</strong></p>
+          <p class="text-style">{{"NO_TOKEN_ZENODO" | translate}}</p>
+          <label for style="margin-right: 5px;" class="text-style">{{"WORD_YES"
+            | translate}}</label>
+          <input type="checkbox" style="margin-right:10px;"
+            (change)="onCheckPersonalToken(true)" [checked]="NoPersonalToken">
+          <label for style="margin-right: 5px;" class="text-style">{{"WORD_NO" |
+            translate}}</label>
+          <input type="checkbox" style="margin-right:10px;"
+            (change)="onCheckPersonalToken(false)" [checked]="!NoPersonalToken">
+        </div>
+        <p class="text-style" *ngIf="!NoPersonalToken && !isTokenOption"><strong>{{"TOKEN_INSTRUCTIONS"
+            | translate}}</strong></p>
+        <ol class="text-style" *ngIf="!NoPersonalToken && !isTokenOption">
+          <li>{{"TOKEN_INSTRUCTIONS01" | translate}}</li>
+          <li>{{"TOKEN_INSTRUCTIONS02" | translate}}</li>
+          <li>{{"TOKEN_INSTRUCTIONS03" | translate}}</li>
+          <li>{{"TOKEN_INSTRUCTIONS04" | translate}}</li>
+          <li>{{"TOKEN_INSTRUCTIONS05" | translate}}</li>
+          <li>{{"TOKEN_INSTRUCTIONS06" | translate}}</li>
+        </ol>
+
+        <iframe
+          *ngIf="!NoPersonalToken && !isTokenOption"
+          width="560" height="315"
+          src="https://www.youtube.com/embed/iGbp0V9qg6U?si=FYkZ9hlyalbt10q3"
+          title="YouTube video player" frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen></iframe>
+
+        <div *ngIf="NoPersonalToken == false  || isTokenOption == true ">
+          <label for class="text-style">{{"ENTER_TOKEN" | translate}}</label>
+          <br>
+          <input type="password" class="text-style passwordInput"
+            formControlName="token"
+            [ngClass]="{'invalidField':tokenForm.get('token')?.hasError('required') &&
+             tokenForm.get('token')?.touched}">
+          <br>
+          <div class="text-danger"
+            *ngIf="tokenForm.get('token')?.hasError('required') &&
+             tokenForm.get('token')?.touched">
+            <span><strong>{{"MANDATORY_FIELD" | translate}} *</strong></span>
+          </div>
+          <br>
+        </div>
+
+        <div>
+          <button mat-raised-button color="primary" mat-button
+            (click)="validateToken()">{{"WORD_NEXT" | translate}}</button>
+          <button matStepperNext #nextButton style="display: none;"></button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step label="{{'PUBLISH_ZENODO_PART02' | translate}}"
+    style="margin-left: 10px;">
+      <h3 class="title-publish"><i class="fa fa-file-text" aria-hidden="true"
+        style="margin-left: 10px;"></i>
+        {{"PUBLISH_ZENODO_PART02" | translate}}</h3>
+      <br>
+      <div class="alert alert-success" role="alert" style="width: 50%;">
+        <p><strong>{{"MSG_INFO_USER" | translate}}</strong></p>
+        <hr>
+      </div>
+
+
+      <form [formGroup]="SecondPart">
+      </form>
+      <br>
+      <br>
+
+      <div>
+        <button mat-raised-button color="primary" matStepperPrevious
+          style="margin-right: 10px;">{{"BTN_BACK" | translate}}</button>
+        <button mat-raised-button color="warn" (click)="confirmCreateRepo()"
+          *ngIf="url_downloadFile.length == 0"
+          > <i
+            class="fa fa-floppy-o" aria-hidden="true"></i> {{"WORD_SAVE"
+          | translate}}</button>
+        <button mat-raised-button color="basic"
+          *ngIf="url_downloadFile.length > 0"
+          (click)="confirmPublish()"> <i
+            class="fa fa-file-archive-o" aria-hidden="true"></i> {{"PUBLISH_BTN"
+          | translate}}</button>
+
+      </div>
+    </mat-step>
+  </mat-stepper>
+</div>

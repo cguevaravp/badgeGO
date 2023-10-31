@@ -1,0 +1,113 @@
+.invalidField {
+    border: 3px solid rgb(227, 7, 7);
+}
+
+.correctField {
+    border: 3px solid #1cc88a
+}
+
+
+.contact1 {
+    width: 100%;
+    min-height: 100%;
+    padding: 15px;
+
+    background: #578bac;
+
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.container-contact1 {
+    width: 1163px;
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 50px 130px 88px
+}
+
+/*------------------------------------------------------------------
+  [  ]*/
+.contact1-pic {
+    width: 296px;
+}
+
+.contact1-pic img {
+    max-width: 100%;
+}
+
+
+/*------------------------------------------------------------------
+  [  ]*/
+.contact1-form {
+    width: 390px;
+}
+
+.contact1-form-title {
+    display: block;
+    font-family: Montserrat-ExtraBold;
+    font-size: 24px;
+    color: #333333;
+    line-height: 1.2;
+    text-align: center;
+    padding-bottom: 10px;
+}
+
+.icon {
+    color: #fff;
+    padding: 10px;
+}
+
+.icon-back-login {
+    color: #827979;
+    margin-left: -100px;
+    margin-top: -20px;
+}
+
+.icon-back-login:hover {
+    color: #57b846;
+}
+
+::-webkit-scrollbar {
+    height: 12px;
+    width: 8px;
+    background: #000;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #939697;
+    -webkit-border-radius: 1ex;
+    -webkit-box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.75);
+}
+
+::-webkit-scrollbar-corner {
+    background: #000;
+}
+
+#viewP{
+  width: 1.5cm;
+  border: 0;
+  background-color: #0d6efd;
+  color: white;
+  border: 1px solid #0d6efd;
+}
+
+#icon{
+font-size: 18px;
+}

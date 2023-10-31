@@ -1,0 +1,11 @@
+
+<div class="row mt-4 mx-1">
+  <div class="col-md-12">
+    <app-experiment-dashboard
+      *ngIf="experiment.name"
+      [experiment]="experiment"
+      [experiment_id]="experiment._id"
+    >
+    </app-experiment-dashboard>
+  </div>
+</div>

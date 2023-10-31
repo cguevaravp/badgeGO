@@ -1,0 +1,18 @@
+{
+  "targets": {
+    "replication-package": {
+      "hosting": {
+        "ecommerce": [
+          "replication-package"
+        ]
+      }
+    },
+    "crudusers-4db76": {
+      "hosting": {
+        "ecommerce": [
+          "crudusers-4db76"
+        ]
+      }
+    }
+  }
+}

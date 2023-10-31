@@ -1,0 +1,113 @@
+
+
+
+<div class="main">
+
+    <!-- Sing in  Form -->
+    <section class="sign-in" style="margin-top: 20px;">
+        <div class="container">
+            <br>
+
+            <div style=" text-align: right;
+                margin-right:1cm;">
+                <div style="position: relative; left: -80px;">
+                    <app-navbar></app-navbar>
+                </div>
+
+                <a href="./contact" style="text-decoration: none; ;color: black;
+                    position: relative; top: -25px">{{"CONTACT_US" | translate}}</a>
+            </div>
+            <div class="signin-content">
+                <div class="signin-image" style="margin-top: -10px;">
+                    <figure>
+                        <img src="../../../assets/images/badgeGo-icon.svg"
+                            alt="sing up image">
+                    </figure>
+
+                </div>
+
+                <div class="signin-form">
+                    <h2 class="form-title">{{"SIGN_IN" | translate}}</h2>
+                    <form [formGroup]="loginForm"
+                        class="register-form"
+                        id="login-form">
+                        <div class="form-group">
+                            <label for="username"><i class="fa fa-user"
+                                    aria-hidden="true"></i></label>
+
+                            <input
+                                formControlName="email"
+                                type="text" name="username" id="username"
+                                placeholder="name@example.com"
+                                />
+
+                                <div class="text-danger"
+                                *ngIf="loginForm.get('email')?.hasError('required') &&
+                                loginForm.get('email')?.touched" style="text-align:
+                                left;font-family: Arial;">
+                                <span><strong>{{"MANDATORY_FIELD" | translate}} *</strong></span>
+                              </div>
+
+                        </div>
+                        <div class="form-group">
+                           <div class="input-group mb-3">
+                            <label for="password"><i class="fa fa-key"
+                                aria-hidden="true"></i></label>
+                            <input
+                            type="password"
+                            formControlName="password" name="password"
+                            id="password"
+                            class="focussed-element"
+                            style="width:5.7cm;"
+                            placeholder="{{'WORD_PASSWORD' | translate}}"
+                            #passwordField2/>
+
+                            <button (click)="viewPasswordTwo()" class="viewP" id="viewP" tooltip="{{type | translate}}"
+                            *ngIf="this.loginForm.value.password.length > 0"><i class="fa fa-eye" id="icon"
+                                #passwordIcon2></i></button>
+
+                                <button  class="viewP" id="viewP" tooltip="{{type | translate}}"
+                            *ngIf="this.loginForm.value.password.length == 0"></button>
+
+                            <div class="text-danger"
+                            *ngIf="loginForm.get('password')?.hasError('required') &&
+                            loginForm.get('password')?.touched" style="text-align:
+                            left;">
+                            <span><strong>{{"MANDATORY_FIELD" | translate}} *</strong></span>
+                          </div>
+
+                           </div>
+
+                        </div>
+                        <div class="form-group" style="margin-top: -20px;">
+                            <label for="remember-me"
+                                class="label-agree-term"><span><span></span></span>
+                                <a href="./forgotpassword"
+                                    style="text-decoration: none;
+                                    color: black;">{{
+                                    "FORGOT_PASSWORD"| translate
+                                    }}</a></label>
+                        </div>
+                        <div class="form-button">
+                            <input type="submit" name="signin" id="signin"
+                                class="form-submit"
+                                [disabled]="loginForm.invalid"
+                                value="{{'LOG_IN' | translate}}"
+                                (click)="onSubmit()" />
+                        </div>
+                        <br>
+                        <p class="signup-image-link">
+                            {{"NO_ACCOUNT" | translate}}<app-register></app-register></p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div style="text-align: center;width: 100%; margin-top: 0.5cm;
+        color: #8cc4cb;">
+        <br>
+        <h4>© 2023  Copyright: badgeGo</h4>
+    </div>
+
+</div>

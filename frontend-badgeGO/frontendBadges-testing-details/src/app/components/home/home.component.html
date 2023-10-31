@@ -1,0 +1,176 @@
+<div id="contenedor" *ngIf="islogged== false" style="padding-bottom: -2cm;">
+  <app-navbar></app-navbar>
+
+
+  <div class="mt-4">
+    <div
+      id="carouselExampleCaptions"
+      class="carousel carousel-dark slide"
+      data-bs-ride="carousel">
+      <ol class="carousel-indicators">
+        <li
+          data-bs-target="#carouselExampleCaptions"
+          data-bs-slide-to="0"
+          class="active"></li>
+        <li data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"></li>
+        <li data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"></li>
+      </ol>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img
+            src="../../../assets/images/imagen01.jpg"
+            class="d-flex"
+            alt="..."
+            width="600"
+            height="400"
+            style="margin-left: auto; margin-right: auto"
+            />
+          <div class="carousel-caption d-none d-md-block">
+            <!-- <h5>First slide label</h5>
+            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p> -->
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img
+            src="../../../assets/images/imagen02.jpg"
+            class="d-flex"
+            alt="..."
+            width="600"
+            height="400"
+            style="margin-left: auto; margin-right: auto"
+            />
+          <div class="carousel-caption d-none d-md-block">
+            <!-- <h5>Second slide label</h5>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p> -->
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img
+            src="../../../assets/images/imagen03.jpeg"
+            class="d-flex"
+            alt="..."
+            width="600"
+            height="400"
+            style="margin-left: auto; margin-right: auto"
+            />
+          <div class="carousel-caption d-none d-md-block">
+            <!-- <h5>Third slide label</h5>
+            <p>
+              Praesent commodo cursus magna, vel scelerisque nisl consectetur.
+            </p> -->
+          </div>
+        </div>
+      </div>
+      <a
+        class="carousel-control-prev"
+        href="#carouselExampleCaptions"
+        role="button"
+        style="margin-left: 5cm;"
+        data-bs-slide="prev">
+        <span aria-hidden="true">
+          <img src="../../../assets/images/back.png" width="80" height="150"  alt="" srcset="">
+        </span>
+        <span class="visually-hidden">Previous</span>
+      </a>
+      <a
+        class="carousel-control-next"
+        href="#carouselExampleCaptions"
+        role="button"
+        data-bs-slide="next"
+        style="margin-right:5cm;">
+        <span  aria-hidden="true">
+          <img src="../../../assets/images/proximo.png" width="80" height="150"  alt="" srcset="">
+        </span>
+        <span class="visually-hidden">Next</span>
+      </a>
+    </div>
+  </div>
+
+  <div style="margin-top: 150px !important">
+    <app-footer></app-footer>
+  </div>
+
+</div>
+<div class="letter" *ngIf="islogged== true">
+  <app-navbar></app-navbar>
+  <br>
+  <br>
+</div>
+
+<div *ngIf="islogged== true">
+  <div class="container-fluid back"
+  style="background-color: white;">
+  <div class="row">
+    <div class="col-sm-12 col-md-2">
+      <div class="align-items-start letter">
+        <div
+          class="nav flex-column nav-pills me-3"
+          id="v-pills-tab"
+          role="tablist"
+          aria-orientation="vertical">
+          <a style="text-align: left; "
+            class="btn btn-primary"
+            id="v-pills-home-tab"
+            data-bs-toggle="pill"
+            role="tab"
+            aria-controls="v-pills-home"
+            aria-selected="true" routerLink="../home"><i class="fa fa-home"
+              aria-hidden="true"
+              style="margin-right: 5px;"></i>{{"HOME"
+            | translate}}</a>
+          <a style="text-align: left; margin-top:
+            0.2cm;"
+            class="btn btn-primary"
+            id="v-pills-home-tab"
+            data-bs-toggle="pill"
+            role="tab"
+            aria-controls="v-pills-home"
+            aria-selected="true"
+            routerLink="../experiment/step"><i class="fa fa-flask"
+              aria-hidden="true"
+              style="margin-right: 5px;"></i>{{"EXPERIMENTS_LABEL"
+            | translate}}</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-10 col-sm-12">
+      <div class="tab-content" id="v-pills-tabContent">
+        <div
+          class="tab-pane fade"
+          id="v-pills-home"
+          role="tabpanel"
+          aria-labelledby="v-pills-home-tab"></div>
+        <div
+          class="tab-pane fade show active"
+          id="v-pills-products"
+          role="tabpanel"
+          aria-labelledby="v-pills-products-tab">
+          <div style="margin-top: -1.5cm;">
+            <div class="row container-fluid letter mt-4 mb-3">
+            </div>
+            <div class="p-3" style="margin-top: -0.4cm;">
+              <div class="mt-4">
+                <div class="d-flex justify-content-center">
+                  <img src="../../../assets/images/imagen01.jpg" alt=""
+                    srcset="" width="600" height="400">
+                </div>
+              </div>
+
+
+
+            </div>
+
+          </div>
+
+          <!-- HASTA AQUI-->
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div style="margin-top: 100px !important">
+  <app-footer></app-footer>
+</div>
+</div>
+

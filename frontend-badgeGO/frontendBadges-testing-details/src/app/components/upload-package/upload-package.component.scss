@@ -1,0 +1,131 @@
+.msgInfo {
+    height: 1cm;
+    width: 12cm;
+}
+
+.fieldForm {
+    width: 15cm;
+    height: 1cm;
+    background-color: #fff;
+    color: #0d0d0e;
+}
+.title-publish{
+    margin-left:-24px;
+    color: #080854;
+}
+
+.fieldDescription {
+    width: 15cm;
+    height: 2.5cm;
+}
+
+::ng-deep .mat-step-text-label {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: normal;
+}
+
+
+.text-style {
+    color: #0d0d0e;
+}
+
+.inputField {
+    width: 15cm;
+    height: 1cm;
+    color: #0d0d0e;
+}
+
+.passwordInput {
+    height: 1cm;
+    width: 10cm;
+}
+
+.form-identifier {
+    height: 1cm;
+    width: 10cm;
+}
+
+
+.form-identifier-select {
+    height: 1cm;
+    width: 10cm;
+    background-color: white;
+}
+
+.invalidField {
+    border: 3px solid rgb(227, 7, 7);
+}
+
+
+.mat-header-cell {
+    font-weight: bolder;
+    font-size: 14px;
+}
+
+.mat-elevation-z8 {
+    width: 61%;
+    border: 2px solid lightgray;
+}
+
+
+.demo-table {
+    width: 70%;
+
+}
+
+
+
+.mat-column-identifier {
+    padding-right: 50px;
+}
+
+
+.mat-column-relation {
+    padding-left: 50px;
+}
+
+.mat-column-resource_type {
+    padding-left: 50px;
+}
+
+
+.mat-column-delete {
+    padding-left: 30px;
+}
+
+
+.mat-column-name {
+    padding-left: 50px;
+}
+
+.mat-column-affiliation {
+    padding-left: 50px;
+}
+
+.mat-column-option {
+    padding-left: 30px;
+}
+
+::ng-deep .mat-horizontal-stepper-header-container {
+	white-space: nowrap;
+	display: flex;
+	align-items: center;
+	visibility: hidden;
+	margin-top: -2cm;
+}
+
+
+::ng-deep .mat-flat-button.mat-accent, .mat-raised-button.mat-accent, .mat-fab.mat-accent, .mat-mini-fab.mat-accent {
+	background-color: #2388f5;
+}
+
+::ng-deep .mat-flat-button.mat-warn, .mat-raised-button.mat-warn, .mat-fab.mat-warn, .mat-mini-fab.mat-warn {
+	background-color: #29aa62;
+}
+
+::ng-deep .mat-flat-button.mat-basic, .mat-raised-button.mat-basic, .mat-fab.mat-basic, .mat-mini-fab.mat-basic {
+	background-color: #ffce09;
+    color: #0d0d0e;
+    margin-left: 12px;
+}

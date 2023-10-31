@@ -1,0 +1,265 @@
+<!-- Modal -->
+<div class="modal fade letter" id="addExperimenterModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">
+          <b>{{ "EXPERIMENTER_ADD" | translate }}</b>
+        </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" #closeAddExperimenter
+          aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form *ngIf="active" #addExperimenterForm="ngForm" [formGroup]="experimenterForm" (ngSubmit)="save()">
+          <div class="submit-form">
+            <div class="form-group">
+              <label for="name">{{ "WORD_NAMES_AND_LASTNAMES" | translate }} *</label>
+              <input type="text" class="form-control" name="full_name"
+              formControlName="full_name"
+              [ngClass]="{'invalidField':
+              experimenterForm.get('full_name')?.hasError('required') &&
+              experimenterForm.get('full_name')?.touched
+              ,'correctField':experimenterForm.get('full_name')?.hasError('required')==false}" />
+              <div class="text-danger"
+              *ngIf="experimenterForm.get('full_name')?.hasError('required') &&
+              experimenterForm.get('full_name')?.touched">
+              <span><strong>{{"MANDATORY_FIELD" | translate}} *</strong></span>
+            </div>
+            <div class="text-success"
+              *ngIf="experimenterForm.get('full_name')?.hasError('required')==
+              false">
+              <span><strong>{{"MSG_VALIDA_FIELD" | translate}}</strong></span>
+            </div>
+            </div>
+            <div class="form-group">
+              <label for="email">{{ "WORD_EMAIL" | translate }} *</label>
+              <input type="email" class="form-control" name="email"
+              formControlName="email"
+              [ngClass]="{'invalidField':
+              experimenterForm.get('email')?.hasError('required')
+              &&
+              experimenterForm.get('email')?.touched ||  experimenterForm.get('email')?.value.length > 0 && experimenterForm.get('email')?.valid == false
+              ,'correctField':experimenterForm.get('email')?.hasError('required')==false
+              &&  experimenterForm.get('email')?.valid == true}" />
+              <div class="text-danger"
+              *ngIf=" experimenterForm.get('email')?.hasError('required')
+              && experimenterForm.get('email')?.valid== false && experimenterForm.get('email')?.touched" style="text-align:left;">
+              <span><strong>{{"MANDATORY_FIELD" | translate}} *</strong></span>
+            </div>
+            <div class="text-success"
+              *ngIf="experimenterForm.get('email')?.hasError('required')==
+              false && experimenterForm.get('email')?.valid == true" style="text-align:left;">
+              <span><strong>{{"MSG_VALIDA_FIELD" | translate}}</strong></span>
+            </div>
+            </div>
+            <div class="form-group">
+              <label for="profile">{{ "EXPERIMENTER_PROFILE" | translate }} *</label>
+              <div class="input-group" *ngIf="change_language== false">
+                <select class="form-control" formControlName="profile"
+                [ngClass]="{'invalidField':
+                experimenterForm.get('profile')?.hasError('required') &&
+                experimenterForm.get('profile')?.touched
+                ,'correctField':experimenterForm.get('profile')?.hasError('required')==false}">
+                  <option value="">{{ "WORD_SELECT_PROFILE" | translate }}</option>
+                  <option *ngFor="let profile of user_profiles" [value]="profile._id">
+                    {{profile.name }}
+                  </option>
+                </select>
+              </div>
+              <div class="input-group" *ngIf="change_language== true">
+                <select class="form-control" formControlName="profile"
+                [ngClass]="{'invalidField':
+                experimenterForm.get('profile')?.hasError('required') &&
+                experimenterForm.get('profile')?.touched
+                ,'correctField':experimenterForm.get('profile')?.hasError('required')==false}">
+                  <option value="">{{ "WORD_SELECT_PROFILE" | translate }}</option>
+                  <option *ngFor="let profile of user_profiles" [value]="profile._id">
+                    {{profile.eng_name }}
+                  </option>
+                </select>
+              </div>
+
+              <div class="text-danger"
+              *ngIf="experimenterForm.get('profile')?.hasError('required') &&
+              experimenterForm.get('profile')?.touched">
+              <span><strong>{{"MANDATORY_FIELD" | translate}} *</strong></span>
+            </div>
+            <div class="text-success"
+              *ngIf="experimenterForm.get('profile')?.hasError('required')==
+              false">
+              <span><strong>{{"MSG_VALIDA_FIELD" | translate}}</strong></span>
+            </div>
+            </div>
+            <div class="form-group"  *ngIf="change_language== false"
+            >
+              <label for="experimenter_roles">{{ "EXPERIMENTER_ROLES" | translate }} *</label>
+              <ng-multiselect-dropdown [placeholder]="'WORD_SELECT_ROLES' | translate" [settings]="dropdownSettings"
+                [data]="roles" formControlName="experimenter_roles">
+              </ng-multiselect-dropdown>
+            </div>
+
+            <div class="form-group"  *ngIf="change_language== true">
+              <label for="experimenter_roles">{{ "EXPERIMENTER_ROLES" | translate }} *</label>
+              <ng-multiselect-dropdown [placeholder]="'WORD_SELECT_ROLES' | translate" [settings]="dropdownEnGSettings"
+                [data]="roles" formControlName="experimenter_roles">
+              </ng-multiselect-dropdown>
+            </div>
+
+            <div class="text-danger"
+            *ngIf="experimenterForm.get('experimenter_roles')?.hasError('required') &&
+            experimenterForm.get('experimenter_roles')?.touched">
+            <span><strong>{{"MANDATORY_FIELD" | translate}} *</strong></span>
+          </div>
+          <div class="text-success"
+            *ngIf="experimenterForm.get('experimenter_roles')?.hasError('required')==
+            false">
+            <span><strong>{{"MSG_VALIDA_FIELD" | translate}}</strong></span>
+          </div>
+
+            <div class="form-group">
+              <label for="affiliation">{{ "WORD_AFFILIATION" | translate }} *</label>
+              <input type="text" class="form-control" name="affiliation" formControlName="affiliation"
+              [ngClass]="{'invalidField':
+              experimenterForm.get('affiliation')?.hasError('required') &&
+              experimenterForm.get('affiliation')?.touched
+              ,'correctField':experimenterForm.get('affiliation')?.hasError('required')==false}"/>
+
+              <div class="text-danger"
+              *ngIf="experimenterForm.get('affiliation')?.hasError('required') &&
+              experimenterForm.get('affiliation')?.touched">
+              <span><strong>{{"MANDATORY_FIELD" | translate}} *</strong></span>
+            </div>
+            <div class="text-success"
+              *ngIf="experimenterForm.get('affiliation')?.hasError('required')==
+              false">
+              <span><strong>{{"MSG_VALIDA_FIELD" | translate}}</strong></span>
+            </div>
+            </div>
+            <div class="form-group">
+              <label for="website">{{ "WORD_WEBSITE" | translate }}</label>
+              <div class="input-group-sm d-flex align-items-center">
+                <input type="text" class="form-control" name="website" formControlName="website" />
+                <i tooltip="{{ 'WORD_HELP_WEBSITE_OF_EXPERIMENTER' | translate }}" placement="top" title
+                  class="fa fa-info-circle ml-1" aria-hidden="true"></i>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="gender">{{ "WORD_GENRE" | translate }} *</label>
+              <div class="input-group" *ngIf="change_language== false">
+                <select class="form-control" formControlName="gender"
+                [ngClass]="{'invalidField':
+                experimenterForm.get('gender')?.hasError('required') &&
+                experimenterForm.get('gender')?.touched
+                ,'correctField':experimenterForm.get('gender')?.hasError('required')==false}">
+                  <option value="">{{ "WORD_SELECT_GENRE" | translate }}</option>
+                  <option *ngFor="let gender of genders" [value]="gender.value">
+                    {{ gender.label }}
+                  </option>
+                </select>
+              </div>
+
+              <div class="input-group" *ngIf="change_language== true">
+                <select class="form-control" formControlName="gender"
+                [ngClass]="{'invalidField':
+                experimenterForm.get('gender')?.hasError('required') &&
+                experimenterForm.get('gender')?.touched
+                ,'correctField':experimenterForm.get('gender')?.hasError('required')==false}">
+                  <option value="">{{ "WORD_SELECT_GENRE" | translate }}</option>
+                  <option *ngFor="let gender of genders" [value]="gender.value">
+                    {{ gender.eng_Label }}
+                  </option>
+                </select>
+              </div>
+
+              <div class="text-danger"
+              *ngIf="experimenterForm.get('gender')?.hasError('required') &&
+              experimenterForm.get('gender')?.touched">
+              <span><strong>{{"MANDATORY_FIELD" | translate}} *</strong></span>
+            </div>
+            <div class="text-success"
+              *ngIf="experimenterForm.get('gender')?.hasError('required')==
+              false">
+              <span><strong>{{"MSG_VALIDA_FIELD" | translate}}</strong></span>
+            </div>
+            </div>
+            <div class="form-group">
+              <label for="comment">{{ "WORD_COMMENT" | translate }}</label>
+              <textarea class="form-control" name="comment" formControlName="comment"></textarea>
+            </div>
+
+            <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+              <symbol id="check-circle-fill" fill="currentColor" viewBox="0 0 16 16">
+                  <path
+                      d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
+              </symbol>
+              <symbol id="info-fill" fill="currentColor" viewBox="0 0 16 16">
+                  <path
+                      d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z" />
+              </symbol>
+              <symbol id="exclamation-triangle-fill" fill="currentColor" viewBox="0 0 16 16">
+                  <path
+                      d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+              </symbol>
+          </svg>
+            <div class="form-group mt-3">
+              <div class="alert alert-primary" role="alert"
+              style="font-size: 12px; font-weight: 400;">
+              <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Info:">
+                <use xlink:href="#info-fill" />
+            </svg>
+                {{"CHECK_CORRESPONDING_AUTHOR" | translate}}
+              </div>
+              <label for="corresponding_autor">{{"CORRESPONDING_AUTHOR" | translate}}</label>
+              <input type="checkbox" style="margin-left: 10px; height: 0.5cm; width: 0.5cm;" name="corresponding_autor" formControlName="corresponding_autor"/>
+            </div>
+            <div class="form-group">
+              <div class="btn-group d-flex mb-2">
+                <button class="btn" type="button" [class.btn-success]="!experimenterForm?.value.is_random_password"
+                  [class.btn-secondary]="experimenterForm?.value.is_random_password"
+                  (click)="experimenterForm?.value.is_random_password && setIsRandomPassword(false)">
+                  {{ "WORD_NEW_PASSWORD" | translate }} *
+                </button>
+                <button class="btn" type="button" [class.btn-success]="experimenterForm?.value.is_random_password"
+                  [class.btn-secondary]="!experimenterForm?.value.is_random_password"
+                  (click)="!experimenterForm?.value.is_random_password && setIsRandomPassword(true)">
+                  {{ "WORD_GENERATE_PASSWORD" | translate }} *
+                </button>
+              </div>
+              <div *ngIf="!experimenterForm?.value.is_random_password">
+                <input type="text" class="form-control" name="password" formControlName="password"
+                [ngClass]="{'invalidField':
+                experimenterForm.get('password')?.hasError('required') &&
+                experimenterForm.get('password')?.touched
+                ,'correctField':experimenterForm.get('password')?.hasError('required')==false}" />
+
+                <div class="text-danger"
+                *ngIf="experimenterForm.get('password')?.hasError('required') &&
+                experimenterForm.get('password')?.touched">
+                <span><strong>{{"MANDATORY_FIELD" | translate}} *</strong></span>
+              </div>
+              <div class="text-success"
+                *ngIf="experimenterForm.get('password')?.hasError('required')==
+                false">
+                <span><strong>{{"MSG_VALIDA_FIELD" | translate}}</strong></span>
+              </div>
+              </div>
+              <div *ngIf="experimenterForm?.value.is_random_password" class="d-flex justify-content-center">
+                <input type="text" class="form-control" name="random_password" formControlName="random_password"
+                  disabled />
+
+                <button class="btn btn-success ml-2" type="button" (click)="generateRandomPassword()">
+                  <i class="fa fa-refresh"></i>
+                </button>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-success mt-3"
+            [disabled]="!this.experimenterForm.valid">
+              {{ "WORD_SAVE" | translate }}
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
