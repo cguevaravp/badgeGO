@@ -1,6 +1,7 @@
 **badgeGO**
 
-![](https://33333.cdn.cke-cs.com/kSW7V9NHUXugvhoQeFaf/images/9786b0d2a3952a655cf27308691de9c717289a264869fec5.png)
+![image](https://res.cloudinary.com/utn-csoft/image/upload/v1706017044/badgeGO_y8r6oi.png)
+
 
 This application allows you to manage software experiments.
 
@@ -18,5 +19,6 @@ For the **frontend** we used tools such as
 \# TypeScript
 
 The following is the diagram of the application architecture
+![image](https://res.cloudinary.com/utn-csoft/image/upload/v1706017133/Arquitectura_wdknwy.jpg)
 
-![](https://33333.cdn.cke-cs.com/kSW7V9NHUXugvhoQeFaf/images/d9e6f43d2cd41d53376ac952f50423783c24d4495c012352.png)
+
