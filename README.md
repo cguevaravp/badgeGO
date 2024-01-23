@@ -6,7 +6,7 @@ This application allows you to manage software experiments.
 
 This is the url application: 
 
-[https://badge-go-project.netlify.app/home](https://badge-go-project.netlify.app/home)
+[https://badge-go.netlify.app/home](https://badge-go.netlify.app/home)
 
 For the **backend** we used tools such as:  
 \# Node JS  
